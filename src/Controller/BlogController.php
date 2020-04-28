@@ -16,7 +16,26 @@ Class BlogController extends AbstractController{
             'Hello World'
         ); */
 
-        return $this->render('index.html.twig');
+        $posts = [
+            [
+                'id' => 1,
+                'title' => 'said',
+                'body' => 'said est un prenom'
+            ],
+            [
+                'id' => 2,
+                'title' => 'younes',
+                'body' => 'younes est un prenom'
+            ],
+            [
+                'id' => 3,
+                'title' => 'brahim',
+                'body' => 'brahim est un prenom'
+            ]
+        ];
+        return $this->render('index.html.twig',[
+            'posts' => $posts
+        ]);
     }
 
     /**
