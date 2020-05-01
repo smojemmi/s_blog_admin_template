@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 Class BlogController extends AbstractController{
 
@@ -16,23 +18,8 @@ Class BlogController extends AbstractController{
             'Hello World'
         ); */
 
-        $posts = [
-            [
-                'id' => 1,
-                'title' => 'said',
-                'body' => 'said est un prenom'
-            ],
-            [
-                'id' => 2,
-                'title' => 'younes',
-                'body' => 'younes est un prenom'
-            ],
-            [
-                'id' => 3,
-                'title' => 'brahim',
-                'body' => 'brahim est un prenom'
-            ]
-        ];
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+        $posts = $repository->findAll();
         return $this->render('index.html.twig',[
             'posts' => $posts
         ]);
@@ -43,6 +30,18 @@ Class BlogController extends AbstractController{
      */
     public function add(){
         return new Response("add post");
+    }
+
+    /**
+     * @Route("/blog/show/{id}",name="post_show")
+     */
+    public function show($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+        $post = $repository->find($id);
+        return $this->render("show.html.twig",[
+            'post' => $post
+        ]);
     }
 }
 
