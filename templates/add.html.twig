@@ -1,0 +1,22 @@
+{% extends 'base.html.twig'%}
+
+{% block title %} Ajouter un article {% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-6 mx-auto">
+                <div class="card bg-light rounded">
+                    <div class="container-fluid">
+                        <h3 class="card-title text-default p-4">
+                            Ajouter un article
+                        </h3>
+                        <div class="card-body mt2 rounded">
+                            {{form(form)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
