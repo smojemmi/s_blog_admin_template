@@ -6,8 +6,9 @@ use App\Entity\Post;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 
-class PostFixture extends Fixture
+class PostFixture extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -23,5 +24,10 @@ class PostFixture extends Fixture
         }
     
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['group1'];
     }
 }
