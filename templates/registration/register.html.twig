@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-6 mx-auto">
+                <div class="card bg-light rounded">
+                    <div class="container-fluid">
+                        <h3 class="card-title text-default p-4">
+                            Register
+                        </h3>
+                        <div class="card-body mt2 rounded">
+                            {{ form_start(registrationForm) }}
+                            {{ form_row(registrationForm.email) }}
+                            {{ form_row(registrationForm.plainPassword) }}
+                            {{ form_row(registrationForm.agreeTerms) }}
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary" type="submit">Register</button>
+                            </div>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
