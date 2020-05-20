@@ -36,6 +36,22 @@ class Post
      */
     private $time;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="posts")
+     * ORM\JoinColumn()
+     */
+    private $user;
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user= $user;
+    }
+
     public function getTitle()
     {
         return $this->title;

@@ -3,3 +3,7 @@ video 25
 
 login : 25 -->30 
 inscription : 31 -- > 33
+menu : --> 34--> 35
+relation : --> 36 --> 38
+38
+voter : 

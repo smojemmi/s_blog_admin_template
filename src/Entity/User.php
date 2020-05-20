@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -34,6 +35,22 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+
+    /**
+     * ORM\OneToMany(targetEntity="App\Entity\Post",mappedBy="user")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 
     public function getId(): ?int
     {
