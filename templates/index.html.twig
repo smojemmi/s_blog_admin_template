@@ -19,6 +19,7 @@
                                 <div class="media">
                                     <img src="https://picsum.photos/100/100" class="mr-3 rounded" alt="">
                                     <div class="media-body">
+                                    <span>{{post.user.email}} </span>
                                         <h5 class="mt-0">
                                             <a href="{{path('post_show',{'id':post.id})}}">{{post.title}}</a>
                                         </h5>

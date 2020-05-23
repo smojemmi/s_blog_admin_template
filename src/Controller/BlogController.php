@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 Class BlogController extends AbstractController{
 
@@ -47,10 +48,11 @@ Class BlogController extends AbstractController{
     /**
      * @Route("/add",name="post_add")
      */
-    public function add(Request $request)
+    public function add(Request $request,UserInterface $user)
     {
         //return new Response("add post");
         $post = new Post();
+        $post->setUser($user);
         $form = $this->formFactory->create(PostType::class,$post);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())

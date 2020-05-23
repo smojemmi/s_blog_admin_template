@@ -42,12 +42,12 @@ class Post
      */
     private $user;
 
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser($user)
+    public function setUser(?User $user)
     {
         $this->user= $user;
     }
