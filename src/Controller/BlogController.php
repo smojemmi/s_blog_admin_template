@@ -15,6 +15,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 Class BlogController extends AbstractController{
 
     private $formFactory;
@@ -87,6 +88,8 @@ Class BlogController extends AbstractController{
      */
     public function edit(Post $post, Request $request)
     {
+        $this->denyAccessUnlessGranted('edit',$post);
+
         $form = $this->formFactory->create(PostType::class,$post);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -107,6 +110,8 @@ Class BlogController extends AbstractController{
      */
     public function delete(Post $post)
     {
+        $this->denyAccessUnlessGranted('delete',$post);
+
         $this->entityManager->remove($post);
         $this->entityManager->flush();
         $this->flashMessage->add('notice','Article supprimé');
