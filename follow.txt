@@ -6,3 +6,5 @@ inscription : 31 -- > 33
 menu : --> 34--> 35
 relation : --> 36 --> 38
 voter : 39 --> 41
+
+installation de la template admintle : https://www.youtube.com/watch?v=UMzqoklWa-c
